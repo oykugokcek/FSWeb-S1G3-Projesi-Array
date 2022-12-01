@@ -40,10 +40,11 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(orijinalTatlar){
-  let newOrijinalTatlar = orijinalTatlar;
+function kopyala(dizi) {
+  let newOrijinalTatlar = dizi;
   return newOrijinalTatlar;
 }
+kopyala(orijinalTatlar);
 //let newOrijinalTatlarForPrint = kopyala(orijinalTatlar);
 //console.log(newOrijinalTatlarForPrint);
 
@@ -59,11 +60,11 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(orijinalTatlar){
-  if(orijinalTatlar.length === 25)
-  return true;
+function dizi25Cesitmi(dizi) {
+  if (dizi.length === 25)
+    return true;
   else
-  return false;
+    return false;
 }
 let answerAsBoolean = dizi25Cesitmi(orijinalTatlar);
 console.log(answerAsBoolean);
@@ -81,12 +82,12 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(orijinalTatlar, yeniTat){
-  orijinalTatlar.unshift(yeniTat);
-  return orijinalTatlar;
+function cesitEkle(dizi, yeniTat) {
+  dizi.unshift(yeniTat);
+  return dizi;
 }
-let yeniTat = "Kakule";
-console.log(cesitEkle(orijinalTatlar, yeniTat));
+
+console.log(cesitEkle(orijinalTatlar, "Kakule"));
 
 /* Cörev 4:
 
@@ -101,12 +102,12 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(){
-  orijinalTatlar.pop();
-  return orijinalTatlar;
+function sonCesitiKaldir(array) {
+  array.pop();
+  return array;
 }
-console.log(sonCesitiKaldir());
-
+console.log(sonCesitiKaldir(orijinalTatlar));
+0
 /* Görev 5:
 Dizideki belirli bir indeksteki çeşniyi döndüren bir işlev yazın.
 
@@ -117,11 +118,11 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
 
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
-let index = 3;
-function indekstekiCesitiGetir(orijinalTatlar, index){
-  return orijinalTatlar[index];
-}
 
+function indekstekiCesitiGetir(array, index) {
+  return array[index];
+}
+indekstekiCesitiGetir(orijinalTatlar, 2);
 
 /* Görev 6:
 
@@ -137,14 +138,14 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
 
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
-let cikarilacakTat = "Kestane";
-function ismeGoreCesitCikar(orijinalTatlar, cikarilacakTat){
-  let index = orijinalTatlar.indexOf(cikarilacakTat);
-  orijinalTatlar.splice(index,1);
-  return orijinalTatlar;
+
+function ismeGoreCesitCikar(tatArray, cikarilacakTat) {
+  let index = tatArray.indexOf(cikarilacakTat);
+  tatArray.splice(index, 1);
+  return tatArray;
 }
-console.log(ismeGoreCesitCikar(orijinalTatlar, cikarilacakTat));
-console.log(orijinalTatlar.length);
+console.log(ismeGoreCesitCikar(orijinalTatlar, "Kestane"));
+
 
 
 /* Görev 7:
@@ -166,20 +167,20 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 
   Bu sorunu çözmek için GELİŞMİŞ DİZİ YÖNTEMLERİNİ (yani .filter) KULLANMAYIN.
 */
+console.clear();
 
-let filtrelenenTatlar = [];
-let arananTat = "Çikolata";
-function ismeGoreFiltrele(orijinalTatlar, arananTat){
-  for(let i = 0; i<orijinalTatlar.length; i++)
-  {
-    if(orijinalTatlar[i].includes(arananTat) === true)
-    filtrelenenTatlar.push(orijinalTatlar[i]);
+//let arananTat = "Çikolata";
+function ismeGoreFiltrele(tatArray, arananTat) {
+  let filtrelenenTatlar = [];
+  for (let i = 0; i < tatArray.length; i++) {
+    if (tatArray[i].includes(arananTat) === true)
+      filtrelenenTatlar.push(tatArray[i]);
   }
-return filtrelenenTatlar;
+  return filtrelenenTatlar;
 
 }
 
-console.log(ismeGoreFiltrele(orijinalTatlar, arananTat));
+console.log(ismeGoreFiltrele(orijinalTatlar, "Çikolata"));
 
 /* ALIŞTIRMA */
 
@@ -192,26 +193,25 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
 
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
+console.clear();
 let array = orijinalTatlar;
-function countWords(str){
+function countWords(str) {
   const arr = str.split(' ');
   return arr.length;
   //return arr.filter(word => word !== '').length;
 
 }
-
-function ortalamaKelimeSayisi(array)
-{
+//console.log(countWords("3. Dizideki öğe başına ortalama kelime sayısını döndürün"));
+function ortalamaKelimeSayisi(array) {
   let totalWordCount = 0;
-  for(let i=0; i<array.length; i++)
-  {
-      totalWordCount += countWords(array[i]);
+  for (let i = 0; i < array.length; i++) {
+    totalWordCount += countWords(array[i]);
   }
   return totalWordCount / array.length;
 }
-console.clear();
+
 console.log(ortalamaKelimeSayisi(array));
-  
+
 /* ALIŞTIRMA 2:
 Firma mevcut tatların yanında artık mevsimlik lezzetler ve hatta bölgesel lezzetler de sunmaktadır. Toplam 25 lezzet aromasını
 orijinalTatlar, yeniTatlar, mevsimlikTatlar ve bolgeselTatlar'dan rastgele seçecek ve bunu rastgeleTatlar adlı bir dizide saklayan bir fonksiyon yazın.
@@ -224,91 +224,84 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
   Örneğin: rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar) çalıştırıldığında ["Kestane", "Ballı Badem,"..."Hindistan Cevizi", "Kuru üzüm"].
 */
 const yeniTatlar = [
-     "Badem",
-      "Ballı Badem",
-     "Fıstık Ezmesi",
-     "Profiterol",
-     "Madlen Çikolata"
-   ]
-  
-   const mevsimlikTatlar = [
-   "Pekan",
-   "Kaju",
-   "Çikolatalı Mousse",
-   "Fransız Vanilyası",
-   "Yumurta",
-   "Alman çikolatası",
-   "Kek üzerine krema",
-   "Hindistan Cevizi",
-   "Kaymaklı Biskuvi",
-   "Beyaz Çikolata",
-   "Mango"
-   ]
-  
-   const bolgeselTatlar = [
-   "Kaymak",
-   "Karpuz",
-   "Karadut",
-   "Turunç",
-   "Portakal",
-   "Yogurt",
-   "Krem Peynir",
-   "Kakao",
-   "Karamel macchiato",
-   "Kuru üzüm",
-   "Peynir",
-   "Karamel"
-   ]
+  "Badem",
+  "Ballı Badem",
+  "Fıstık Ezmesi",
+  "Profiterol",
+  "Madlen Çikolata"
+]
 
-   function chooseAnArray()
-   {
-    let whichArray = Math.floor(Math.random()*3);
-    if (whichArray === 0)
-    {
-      return orijinalTatlar;
-    }
-    if (whichArray === 1)
-    {
-      return yeniTatlar;
-    }
-    if (whichArray === 2)
-    {
-      return mevsimlikTatlar;
-    }
-    else 
-    {
-      return bolgeselTatlar;
-    }
-   }
-   //console.log(chooseAnArray());
+const mevsimlikTatlar = [
+  "Pekan",
+  "Kaju",
+  "Çikolatalı Mousse",
+  "Fransız Vanilyası",
+  "Yumurta",
+  "Alman çikolatası",
+  "Kek üzerine krema",
+  "Hindistan Cevizi",
+  "Kaymaklı Biskuvi",
+  "Beyaz Çikolata",
+  "Mango"
+]
 
+const bolgeselTatlar = [
+  "Kaymak",
+  "Karpuz",
+  "Karadut",
+  "Turunç",
+  "Portakal",
+  "Yogurt",
+  "Krem Peynir",
+  "Kakao",
+  "Karamel macchiato",
+  "Kuru üzüm",
+  "Peynir",
+  "Karamel"
+]
 
-
-function rastgeleTatlar(){
- let rastgeleTatlarListesi = [];
- let i = 0;
- while (rastgeleTatlarListesi.length <= 24)
- {
-  
-  let secilenTatlar = chooseAnArray();
-  let index = Math.floor(Math.random()*(secilenTatlar.length-1));
-  if(rastgeleTatlarListesi.includes(secilenTatlar[index]) === false)
-  {
-    
-    rastgeleTatlarListesi.push(secilenTatlar[index]);
-    i++;
+function chooseAnArray() {
+  let whichArray = Math.floor(Math.random() * 3);
+  if (whichArray === 0) {
+    return orijinalTatlar;
   }
- 
- }
- console.log("Döngü " + i + ". kez gerçekleşti");
- return rastgeleTatlarListesi;
+  if (whichArray === 1) {
+    return yeniTatlar;
+  }
+  if (whichArray === 2) {
+    return mevsimlikTatlar;
+  }
+  else {
+    return bolgeselTatlar;
+  }
+}
+//console.log(chooseAnArray());
+
+
+
+function rastgeleTatlar() {
+  let rastgeleTatlarListesi = [];
+  let i = 0;
+  while (rastgeleTatlarListesi.length <= 24) {
+
+    let secilenTatlar = chooseAnArray();
+    let index = Math.floor(Math.random() * (secilenTatlar.length - 1));
+    if (rastgeleTatlarListesi.includes(secilenTatlar[index]) === false) {
+
+      rastgeleTatlarListesi.push(secilenTatlar[index]);
+      i++;
+    }
+
+  }
+  console.log("Döngü " + i + ". kez gerçekleşti");
+  return rastgeleTatlarListesi;
 }
 console.log(rastgeleTatlar());
 
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
-function sa(){
+function sa() {
   console.log('Calışıyor');
   return 'as';
 }
