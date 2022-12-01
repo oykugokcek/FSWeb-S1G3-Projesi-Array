@@ -167,15 +167,15 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
   Bu sorunu çözmek için GELİŞMİŞ DİZİ YÖNTEMLERİNİ (yani .filter) KULLANMAYIN.
 */
 
-let yeniTatlar = [];
+let filtrelenenTatlar = [];
 let arananTat = "Çikolata";
 function ismeGoreFiltrele(orijinalTatlar, arananTat){
   for(let i = 0; i<orijinalTatlar.length; i++)
   {
     if(orijinalTatlar[i].includes(arananTat) === true)
-    yeniTatlar.push(orijinalTatlar[i]);
+    filtrelenenTatlar.push(orijinalTatlar[i]);
   }
-return yeniTatlar;
+return filtrelenenTatlar;
 
 }
 
@@ -192,12 +192,26 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
 
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
+let array = orijinalTatlar;
+function countWords(str){
+  const arr = str.split(' ');
+  return arr.length;
+  //return arr.filter(word => word !== '').length;
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
 }
 
-
+function ortalamaKelimeSayisi(array)
+{
+  let totalWordCount = 0;
+  for(let i=0; i<array.length; i++)
+  {
+      totalWordCount += countWords(array[i]);
+  }
+  return totalWordCount / array.length;
+}
+console.clear();
+console.log(ortalamaKelimeSayisi(array));
+  
 /* ALIŞTIRMA 2:
 Firma mevcut tatların yanında artık mevsimlik lezzetler ve hatta bölgesel lezzetler de sunmaktadır. Toplam 25 lezzet aromasını
 orijinalTatlar, yeniTatlar, mevsimlikTatlar ve bolgeselTatlar'dan rastgele seçecek ve bunu rastgeleTatlar adlı bir dizide saklayan bir fonksiyon yazın.
@@ -209,49 +223,88 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 
   Örneğin: rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar) çalıştırıldığında ["Kestane", "Ballı Badem,"..."Hindistan Cevizi", "Kuru üzüm"].
 */
+const yeniTatlar = [
+     "Badem",
+      "Ballı Badem",
+     "Fıstık Ezmesi",
+     "Profiterol",
+     "Madlen Çikolata"
+   ]
+  
+   const mevsimlikTatlar = [
+   "Pekan",
+   "Kaju",
+   "Çikolatalı Mousse",
+   "Fransız Vanilyası",
+   "Yumurta",
+   "Alman çikolatası",
+   "Kek üzerine krema",
+   "Hindistan Cevizi",
+   "Kaymaklı Biskuvi",
+   "Beyaz Çikolata",
+   "Mango"
+   ]
+  
+   const bolgeselTatlar = [
+   "Kaymak",
+   "Karpuz",
+   "Karadut",
+   "Turunç",
+   "Portakal",
+   "Yogurt",
+   "Krem Peynir",
+   "Kakao",
+   "Karamel macchiato",
+   "Kuru üzüm",
+   "Peynir",
+   "Karamel"
+   ]
+
+   function chooseAnArray()
+   {
+    let whichArray = Math.floor(Math.random()*3);
+    if (whichArray === 0)
+    {
+      return orijinalTatlar;
+    }
+    if (whichArray === 1)
+    {
+      return yeniTatlar;
+    }
+    if (whichArray === 2)
+    {
+      return mevsimlikTatlar;
+    }
+    else 
+    {
+      return bolgeselTatlar;
+    }
+   }
+   //console.log(chooseAnArray());
 
 
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
+
+function rastgeleTatlar(){
+ let rastgeleTatlarListesi = [];
+ let i = 0;
+ while (rastgeleTatlarListesi.length <= 24)
+ {
+  
+  let secilenTatlar = chooseAnArray();
+  let index = Math.floor(Math.random()*(secilenTatlar.length-1));
+  if(rastgeleTatlarListesi.includes(secilenTatlar[index]) === false)
+  {
+    
+    rastgeleTatlarListesi.push(secilenTatlar[index]);
+    i++;
+  }
+ 
+ }
+ console.log("Döngü " + i + ". kez gerçekleşti");
+ return rastgeleTatlarListesi;
 }
+console.log(rastgeleTatlar());
 
-// NEW DATA ARRAYS FOR STRETCH 2 ⬇️
-// const yeniTatlar = [
-//   "Badem",
-//   "Ballı Badem",
-//   "Fıstık Ezmesi",
-//   "Profiterol",
-//   "Madlen Çikolata"
-// ]
-
-// const mevsimlikTatlar = [
-// "Pekan",
-// "Kaju",
-// "Çikolatalı Mousse",
-// "Fransız Vanilyası",
-// "Yumurta",
-// "Alman çikolatası",
-// "Kek üzerine krema",
-// "Hindistan Cevizi",
-// "Kaymaklı Biskuvi",
-// "Beyaz Çikolata",
-// "Mango"
-// ]
-
-// const bolgeselTatlar = [
-// "Kaymak",
-// "Karpuz",
-// "Karadut",
-// "Turunç",
-// "Portakal",
-// "Yogurt",
-// "Krem Peynir",
-// "Kakao",
-// "Karamel macchiato",
-// "Kuru üzüm",
-// "Peynir",
-// "Karamel"
-// ]
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
